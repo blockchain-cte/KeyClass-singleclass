@@ -48,7 +48,7 @@ def get_vocabulary(text_corpus, max_df=1.0, min_df=0.01, ngram_range=(1, 1)):
                                  ngram_range=ngram_range)
 
     word_indicator_matrix = vectorizer.fit_transform(text_corpus).toarray()
-    vocabulary = np.asarray(vectorizer.get_feature_names())  # Vocabulary
+    vocabulary = np.asarray(vectorizer.get_feature_names_out())  # Vocabulary
 
     return word_indicator_matrix, vocabulary
 
