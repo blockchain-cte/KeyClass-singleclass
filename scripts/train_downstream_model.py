@@ -79,6 +79,7 @@ def load_data(args):
               'r') as f:
         y_test = f.readlines()
     # y_test = np.array([int(i.replace('\n', '')) for i in y_test])
+    print("YTEST = ",y_test)
     y_test = label_data.label_converter(args, y_train)
 
     # Print data statistics

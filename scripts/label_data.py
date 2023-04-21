@@ -39,7 +39,6 @@ def label_converter(args, inp):
     return_val = []
     for line in inp:
         row = []
-        print(line)
         for c in line:
             if c=='0' or c=='1':
                 row.append(int(c))
@@ -65,7 +64,7 @@ def run(args_cmd):
             y_train = f.readlines()
 
         # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
-        print(y_train)
+        print("YTRAIN = ",y_train)
         y_train = label_converter(args, y_train)
         training_labels_present = True
     else:
