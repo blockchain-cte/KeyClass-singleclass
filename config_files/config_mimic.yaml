@@ -14,7 +14,7 @@ h_sizes:
 - 768
 - 256
 - 64
-- 1
+- 2
 label_model: data_programming
 label_model_lr: 0.01
 label_model_n_epochs: 100
@@ -22,7 +22,7 @@ max_num: 500
 min_df: 0.001
 model_path: ../models/mimic/
 n_bootstrap: 100
-n_classes: 1 # Change to 19 in final run
+n_classes: 2 # Change to 19 in final run
 n_jobs: 10
 ngram_range: !!python/tuple
 - 1
