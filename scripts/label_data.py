@@ -35,6 +35,17 @@ import torch
 import os
 from os.path import join, exists
 
+def label_converter(args, inp):
+    return_val = []
+    for line in inp:
+        row = []
+        for c in line:
+            if c=='0' or c=='1':
+                row.append(int(c))
+        # return_val.append(row)
+        return_val.append(row[args['n_class_being_tested']])
+    return np.array(return_val)
+
 
 def run(args_cmd):
 
@@ -51,7 +62,9 @@ def run(args_cmd):
         with open(join(args['data_path'], args['dataset'], 'train_labels.txt'),
                   'r') as f:
             y_train = f.readlines()
-        y_train = np.array([int(i.replace('\n', '')) for i in y_train])
+
+        # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
+        y_train = label_converter(args, y_train)
         training_labels_present = True
     else:
         y_train = None
