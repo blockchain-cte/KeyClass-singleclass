@@ -65,6 +65,7 @@ def run(args_cmd):
             y_train = f.readlines()
 
         # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
+        print(y_train)
         y_train = label_converter(args, y_train)
         training_labels_present = True
     else:
