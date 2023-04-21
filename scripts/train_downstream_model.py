@@ -35,6 +35,7 @@ from os.path import join, exists
 import models
 import utils
 import train_classifier
+import label_data
 import pickle
 from datetime import datetime
 
@@ -71,7 +72,7 @@ def load_data(args):
                 'r') as f:
             y_train = f.readlines()
         # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
-        y_train = label_converter(args, y_train)
+        y_train = label_data.label_converter(args, y_train)
         training_labels_present = True
     else:
         y_train = None
