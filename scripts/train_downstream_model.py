@@ -22,9 +22,6 @@
 # SOFTWARE.
 
 import sys
-
-from scripts.label_data import label_converter
-
 sys.path.append('../keyclass/')
 
 import argparse
