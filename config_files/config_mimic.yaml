@@ -1,7 +1,7 @@
 activation: torch.nn.LeakyReLU()
 average: weighted
 base_encoder: paraphrase-mpnet-base-v2
-criterion: torch.nn.BCEWithLogitsLoss(reduction='none')
+criterion: torch.nn.CrossEntropyLoss(reduction='none')
 data_path: /content/KeyClass/scripts/data/ # Change it to base path/KeyClass/....
 dataset: mimic
 device: cuda
