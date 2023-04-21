@@ -81,6 +81,7 @@ def load_data(args):
     # y_test = np.array([int(i.replace('\n', '')) for i in y_test])
     print("YTEST = ",y_test)
     y_test = label_data.label_converter(args, y_train)
+    print("YTEST = ", y_test)
 
     # Print data statistics
     print('\n==== Data statistics ====')
