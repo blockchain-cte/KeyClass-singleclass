@@ -39,7 +39,7 @@ def label_converter(args, inp):
     return_val = []
     for line in inp:
         row = []
-        for c in str(line):
+        for c in line:
             if c=='0' or c=='1':
                 row.append(int(c))
         # return_val.append(row)
