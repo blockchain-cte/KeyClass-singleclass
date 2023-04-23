@@ -142,8 +142,8 @@ class CreateLabellingFunctions:
 
         ## get the bert embeddings of the categories
         self.label_embeddings = self.encoder.encode(sentences=label_names)
-        print("Label Names = ",label_names)
-        print("Label embeddings = ",self.label_embeddings)
+        # print("Label Names = ",label_names)
+        # print("Label embeddings = ",self.label_embeddings)
 
         ## get vocab according to n-grams
         self.word_indicator_matrix, self.vocabulary = get_vocabulary(\
@@ -151,8 +151,8 @@ class CreateLabellingFunctions:
             max_df=1.0,
             min_df=min_df,
             ngram_range=ngram_range)
-        print("Text corpus = ",text_corpus)
-        print("Word Indicator matrix = ",self.word_indicator_matrix)
+        # print("Text corpus = ",text_corpus)
+        # print("Word Indicator matrix = ",self.word_indicator_matrix)
 
         # embed vocab to compare with label_embeddings
         self.vocabulary_embeddings = self.encoder.encode(

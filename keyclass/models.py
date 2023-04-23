@@ -346,7 +346,7 @@ class FeedForwardFlexible(torch.nn.Module):
                                      raw_text=raw_text).cpu().numpy()
                 probs_list.append(probs)
             self.train()
-        return np.concatenate(probs_list, axis=0)
+        return probs_list
 
 
 class LabelModelWrapper:
