@@ -95,6 +95,10 @@ def run(args_cmd):
         base_encoder=args['base_encoder'],
         device=torch.device(args['device']),
         label_model=args['label_model'])
+
+    print("YTRAIN",y_train)
+    print("TRAIN TEXT",train_text)
+    print("LABEL NAMES",label_names)
     proba_preds = labeler.get_labels(
         text_corpus=train_text,
         label_names=label_names,
