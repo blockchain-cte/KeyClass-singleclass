@@ -98,9 +98,9 @@ def compute_metrics(y_preds: np.array,
     # best_threshold = thresholds[np.argmax(f1_scores)]
     # y_preds = (y_preds>best_threshold).astype(int)
 
-    y_preds = np.asarray(y_preds).squeeze()
+    y_preds = np.asarray(y_preds).reshape((1,-1))
     y_preds = y_preds.tolist()
-    y_true = np.asarray(y_true)
+    y_true = np.asarray(y_true).reshape((1,-1))
     y_true = y_true.tolist()
     print("Inside compute metrics")
     print("Ypreds = ",y_preds)
