@@ -104,6 +104,7 @@ def load_data(args):
     )
     print('\n==== Data statistics (after applying mask) ====')
 
+    y_train_lm = y_train.reshape(y_train_lm.shape)
     if training_labels_present:
         y_train_masked = y_train[mask]
     y_train_lm_masked = y_train_lm[mask]
@@ -121,8 +122,9 @@ def load_data(args):
         f'Training class distribution (label model predictions): {np.unique(y_train_lm_masked, return_counts=True)[1]/len(y_train_lm_masked)}'
     )
 
+
     print(y_train, y_train.shape)
-    print("ytrainlm",y_train_lm,y_train_lm.shape)
+    print("ytrainlm", y_train_lm, y_train_lm.shape)
     return X_train_embed_masked, y_train_lm_masked, y_train_masked, \
      X_test_embed, y_test, \
      training_labels_present, sample_weights_masked, proba_preds_masked
