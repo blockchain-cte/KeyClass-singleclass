@@ -112,6 +112,7 @@ def compute_metrics(y_preds: np.array,
     print("recall",recall)
     print("threshold",threshold)
     best_id = np.argmax(f1_scores)
+    print("best id", best_id)
     theta = threshold[best_id]
     F1 = f1_scores[best_id]
     prec = precision[best_id]
