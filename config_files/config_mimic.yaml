@@ -12,7 +12,6 @@ end_model_patience: 3
 end_model_weight_decay: 1e-4
 h_sizes:
 - 768
-- 64
 - 1
 label_model: data_programming
 label_model_lr: 0.01
