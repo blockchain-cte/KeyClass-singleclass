@@ -88,6 +88,8 @@ def run(args_cmd):
     for a in args:
         if 'target' in a: label_names.append(args[a])
 
+    label_names = label_names[args['n_class_being_tested']]
+
     # Creating labeling functions
     labeler = create_lfs.CreateLabellingFunctions(
         base_encoder=args['base_encoder'],
