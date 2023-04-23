@@ -97,8 +97,8 @@ def compute_metrics(y_preds: np.array,
     # f1_scores = 2 * recall * precision / (recall + precision)
     # best_threshold = thresholds[np.argmax(f1_scores)]
     # y_preds = (y_preds>best_threshold).astype(int)
-    y_true = np.asarray(y_true).squeeze()
-    y_preds = np.asarray(y_preds)
+    y_preds = np.asarray(y_preds).squeeze()
+    y_true = np.asarray(y_true)
     print(np.shape(y_preds))
     print(np.shape(y_true))
     auc_score = roc_auc_score(y_true,y_preds)
