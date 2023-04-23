@@ -121,6 +121,7 @@ def compute_metrics(y_preds: np.array,
     prec = precision[best_id]
     rec = recall[best_id]
     print("theta", theta, F1, prec, rec)
+    print("Acc",accuracy_score(y_true, (y_preds>theta).astype(int)))
 
 
     return [
