@@ -99,6 +99,8 @@ def compute_metrics(y_preds: np.array,
     # y_preds = (y_preds>best_threshold).astype(int)
     y_true = np.asarray(y_true)
     y_preds = np.asarray(y_preds)
+    print(np.shape(y_preds))
+    print(np.shape(y_true))
     auc_score = roc_auc_score(y_true,y_preds)
     precision, recall, threshold = precision_recall_curve(y_true, y_preds)
     f1_scores = 2 * recall * precision / (recall + precision)
