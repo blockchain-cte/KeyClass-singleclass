@@ -316,10 +316,10 @@ class FeedForwardFlexible(torch.nn.Module):
         for layer in self.layers:
             x = layer(x)
 
-        if mode == 'inference':
-            x = torch.nn.Sigmoid(x)
-        elif mode == 'self_train':
-            x = torch.nn.Sigmoid(x)
+        # if mode == 'inference':
+        #     x = torch.nn.Sigmoid(x)
+        # elif mode == 'self_train':
+        #     x = torch.nn.Sigmoid(x)
 
         return x
 
