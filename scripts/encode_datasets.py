@@ -47,7 +47,7 @@ def run(args_cmd):
     for split in ['train', 'test']:
         sentences = utils.fetch_data(dataset=args['dataset'],
                                      split=split,
-                                     path=args['data_path'])
+                                     path=args['data_path'])[:args['size_of_dataset']]
         embeddings = model.encode(
             sentences=sentences,
             batch_size=args['end_model_batch_size'],

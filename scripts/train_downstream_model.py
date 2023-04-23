@@ -68,7 +68,7 @@ def load_data(args):
         with open(
                 join(args['data_path'], args['dataset'], f'train_labels.txt'),
                 'r') as f:
-            y_train = f.readlines()
+            y_train = f.readlines()[:args['size_of_dataset']]
         # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
         y_train = label_data.label_converter(args, y_train)
         training_labels_present = True
@@ -78,7 +78,7 @@ def load_data(args):
 
     with open(join(args['data_path'], args['dataset'], f'test_labels.txt'),
               'r') as f:
-        y_test = f.readlines()
+        y_test = f.readlines()[:args['size_of_dataset']]
     # y_test = np.array([int(i.replace('\n', '')) for i in y_test])
     print("YTEST = ",y_test)
     y_test = label_data.label_converter(args, y_test)

@@ -61,7 +61,7 @@ def run(args_cmd):
     if exists(join(args['data_path'], args['dataset'], 'train_labels.txt')):
         with open(join(args['data_path'], args['dataset'], 'train_labels.txt'),
                   'r') as f:
-            y_train = f.readlines()
+            y_train = f.readlines()[:args['size_of_dataset']]
 
         # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
         print("YTRAIN = ",y_train)
