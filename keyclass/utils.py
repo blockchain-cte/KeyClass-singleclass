@@ -230,7 +230,7 @@ def fetch_data(dataset='imdb', path='~/', split='train'):
         raise ValueError(
             f'File {split}.txt does not exists in {join(path, dataset)}')
 
-    text = open(f'{join(path, dataset, split)}.txt').readlines()[:args['size_of_dataset']]
+    text = open(f'{join(path, dataset, split)}.txt').readlines()
 
     # if dataset == 'mimic':
     #     text = [cleantext(line) for line in text]
