@@ -317,9 +317,9 @@ class FeedForwardFlexible(torch.nn.Module):
             x = layer(x)
 
         if mode == 'inference':
-            x = torch.nn.Softmax(dim=-1)(x)
+            x = torch.nn.Sigmoid(x)
         elif mode == 'self_train':
-            x = torch.nn.LogSoftmax(dim=-1)(x)
+            x = torch.nn.Sigmoid(x)
 
         return x
 
