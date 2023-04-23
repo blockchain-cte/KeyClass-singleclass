@@ -202,6 +202,9 @@ def train(args_cmd):
                   results_dir=args['results_path'],
                   split='train')
 
+        print(end_model_preds_train)
+        print("ytrain lm masked",y_train_lm_masked)
+
     training_metrics_with_lm = utils.compute_metrics(
         # y_preds=np.argmax(end_model_preds_train, axis=1),
         y_preds=end_model_preds_train,
