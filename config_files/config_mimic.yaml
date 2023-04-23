@@ -5,8 +5,8 @@ criterion: torch.nn.CrossEntropyLoss(reduction='none')
 data_path: /content/KeyClass/scripts/data/ # Change it to base path/KeyClass/....
 dataset: mimic
 device: cuda
-end_model_batch_size: 2 # Make 128 in Final run
-end_model_epochs: 8
+end_model_batch_size: 8 # Make 128 in Final run
+end_model_epochs: 1
 end_model_lr: 1e-4
 end_model_patience: 3
 end_model_weight_decay: 1e-4
@@ -58,4 +58,4 @@ topk: 50
 use_custom_encoder: false
 use_noise_aware_loss: true
 n_class_being_tested: 0
-size_of_dataset: 10
+size_of_dataset: 1000
