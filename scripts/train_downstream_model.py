@@ -121,9 +121,9 @@ def load_data(args):
         f'Training class distribution (label model predictions): {np.unique(y_train_lm_masked, return_counts=True)[1]/len(y_train_lm_masked)}'
     )
 
-    return X_train_embed_masked, y_train_lm_masked, y_train_masked, \
+    return X_train_embed_masked, y_train, y_train_masked, \
      X_test_embed, y_test, \
-     training_labels_present, sample_weights_masked, proba_preds_masked
+     training_labels_present, sample_weights_masked, proba_preds_masked,y_train
 
 
 def train(args_cmd):
