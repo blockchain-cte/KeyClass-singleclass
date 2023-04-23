@@ -108,6 +108,9 @@ def compute_metrics(y_preds: np.array,
     auc_score = roc_auc_score(y_true,y_preds)
     precision, recall, threshold = precision_recall_curve(y_true, y_preds)
     f1_scores = 2 * recall * precision / (recall + precision)
+    print("precision",precision)
+    print("recall",recall)
+    print("threshold",threshold)
     best_id = np.argmax(f1_scores)
     theta = threshold[best_id]
     F1 = f1_scores[best_id]
