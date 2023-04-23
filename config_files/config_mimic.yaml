@@ -1,4 +1,4 @@
-activation: torch.nn.LeakyReLU()
+activation: torch.nn.Sigmoid()
 average: weighted
 base_encoder: paraphrase-mpnet-base-v2
 criterion: torch.nn.CrossEntropyLoss(reduction='none')
