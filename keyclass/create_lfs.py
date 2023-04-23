@@ -142,6 +142,8 @@ class CreateLabellingFunctions:
 
         ## get the bert embeddings of the categories
         self.label_embeddings = self.encoder.encode(sentences=label_names)
+        print("Label Names = ",label_names)
+        print("Label embeddings = ",self.label_embeddings)
 
         ## get vocab according to n-grams
         self.word_indicator_matrix, self.vocabulary = get_vocabulary(\
@@ -149,10 +151,17 @@ class CreateLabellingFunctions:
             max_df=1.0,
             min_df=min_df,
             ngram_range=ngram_range)
+        print("Text corpus = ",text_corpus)
+        print("Word Indicator matrix = ",self.word_indicator_matrix)
 
         # embed vocab to compare with label_embeddings
         self.vocabulary_embeddings = self.encoder.encode(
             sentences=self.vocabulary)
+
+        # print("Vocab = ",self.vocabulary)
+        # print("Vocab embeddings = ",self.vocabulary_embeddings)
+        # print('Label embeddings = ', self.label_embeddings)
+        # print('w')
 
         # labeler.assign_categories_to_keywords(cutoff=0.9)
         self.keywords, self.assigned_category, self.word_indicator_matrix = assign_categories_to_keywords(\
@@ -179,7 +188,7 @@ class CreateLabellingFunctions:
             keywords=self.keywords,
             assigned_category=self.assigned_category)
 
-        #     print('labeler.label_matrix', np.unique(labeler.label_matrix, return_counts=True))
+            # print('labeler.label_matrix', np.unique(labeler.label_matrix, return_counts=True))
         label_model = models.LabelModelWrapper(\
             label_matrix=self.label_matrix,
             n_classes=n_classes,
