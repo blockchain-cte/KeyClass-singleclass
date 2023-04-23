@@ -52,13 +52,13 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
     if isinstance(metrics, list):
         assert len(metrics) == 3, "Metrics must be of length 3!"
         results = dict()
-        results['Accuracy'] = metrics[0]
+        results['F1'] = metrics[0]
         results['Precision'] = metrics[1]
         results['Recall'] = metrics[2]
     elif isinstance(metrics, np.ndarray):
         assert len(metrics) == 3, "Metrics must be of length 3!"
         results = dict()
-        results['Accuracy (mean, std)'] = metrics[0].tolist()
+        results['F1 (mean, std)'] = metrics[0].tolist()
         results['Precision (mean, std)'] = metrics[1].tolist()
         results['Recall (mean, std)'] = metrics[2].tolist()
     else:
@@ -117,7 +117,7 @@ def compute_metrics(y_preds: np.array,
 
 
     return [
-        accuracy_score(y_true,y_preds),
+        F1,
         prec,
         rec
     ]
