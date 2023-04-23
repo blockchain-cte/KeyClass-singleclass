@@ -123,7 +123,7 @@ def load_data(args):
 
     return X_train_embed_masked, y_train, y_train_masked, \
      X_test_embed, y_test, \
-     training_labels_present, sample_weights_masked, proba_preds_masked,y_train
+     training_labels_present, sample_weights_masked, proba_preds_masked
 
 
 def train(args_cmd):
