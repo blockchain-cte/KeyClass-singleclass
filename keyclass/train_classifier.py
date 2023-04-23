@@ -116,7 +116,7 @@ def train(model: torch.nn.Module,
             if raw_text == False: batch_x = batch_x.to(device)
 
             out = model.forward(batch_x, mode='inference', raw_text=raw_text)
-            loss = criterion(out, batch_y)
+            loss = criterion(out.float(), batch_y.float())
 
             if sample_weights is not None:
                 batch_weight = sample_weights[indices]
