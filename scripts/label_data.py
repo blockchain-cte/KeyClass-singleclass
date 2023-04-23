@@ -55,7 +55,7 @@ def run(args_cmd):
     # Load training data
     train_text = utils.fetch_data(dataset=args['dataset'],
                                   path=args['data_path'],
-                                  split='train')
+                                  split='train')[:args['size_of_dataset']]
 
     training_labels_present = False
     if exists(join(args['data_path'], args['dataset'], 'train_labels.txt')):

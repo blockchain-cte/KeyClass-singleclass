@@ -229,10 +229,10 @@ def train(args_cmd):
     # Fetching the raw text data for self-training
     X_train_text = utils.fetch_data(dataset=args['dataset'],
                                     path=args['data_path'],
-                                    split='train')
+                                    split='train')[:args['size_of_dataset']]
     X_test_text = utils.fetch_data(dataset=args['dataset'],
                                    path=args['data_path'],
-                                   split='test')
+                                   split='test')[:args['size_of_dataset']]
 
     model = train_classifier.self_train(
         model=model,
@@ -329,10 +329,10 @@ def test(args_cmd, end_model_path, end_model_self_trained_path):
     # Fetching the raw text data for self-training
     X_train_text = utils.fetch_data(dataset=args['dataset'],
                                     path=args['data_path'],
-                                    split='train')
+                                    split='train')[:args['size_of_dataset']]
     X_test_text = utils.fetch_data(dataset=args['dataset'],
                                    path=args['data_path'],
-                                   split='test')
+                                   split='test')[:args['size_of_dataset']]
 
     model = torch.load(end_model_self_trained_path)
 
