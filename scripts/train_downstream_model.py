@@ -72,6 +72,7 @@ def load_data(args):
         # y_train = np.array([int(i.replace('\n', '')) for i in y_train])
         y_train = label_data.label_converter(args, y_train)
         training_labels_present = True
+        print("Here")
     else:
         y_train = None
         print('No training labels found!')
@@ -153,6 +154,7 @@ def train(args_cmd):
         encoder = models.Encoder(model_name=args['base_encoder'],
                                  device=args['device'])
 
+    print("ytrain in downstream classifier",y_train_lm_masked)
     classifier = models.FeedForwardFlexible(
         encoder_model=encoder,
         h_sizes=args['h_sizes'],
