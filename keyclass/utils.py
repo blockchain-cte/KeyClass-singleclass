@@ -102,8 +102,9 @@ def compute_metrics(y_preds: np.array,
     y_preds = y_preds.tolist()
     y_true = np.asarray(y_true)
     y_true = y_true.tolist()
-    print(y_preds)
-    print(y_true)
+    print("Inside compute metrics")
+    print("Ypreds = ",y_preds)
+    print("Ytrue = ",y_true)
     auc_score = roc_auc_score(y_true,y_preds)
     precision, recall, threshold = precision_recall_curve(y_true, y_preds)
     f1_scores = 2 * recall * precision / (recall + precision)
@@ -112,6 +113,7 @@ def compute_metrics(y_preds: np.array,
     F1 = f1_scores[best_id]
     prec = precision[best_id]
     rec = recall[best_id]
+    print("theta", theta, F1, prec, rec)
 
 
     return [
@@ -147,6 +149,7 @@ def compute_metrics_bootstrap(y_preds: np.array,
         n_jobs: int
             Number of jobs to run in parallel. 
     """
+    print("Inside compute metrics bootstrap")
     output_ =  joblib.Parallel(n_jobs=n_jobs, verbose=1)(
                                 joblib.delayed(compute_metrics)
                                     (y_preds[boostrap_inds], y_true[boostrap_inds]) \
