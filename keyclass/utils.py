@@ -27,7 +27,7 @@ import re
 from typing import List, Dict, Tuple, Iterable, Type, Union, Callable, Optional
 import numpy as np
 import joblib
-from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import precision_score, recall_score, roc_auc_score, roc_curve, precision_recall_curve, accuracy_score
 from datetime import datetime
 import torch
 from yaml import load, dump
@@ -92,10 +92,25 @@ def compute_metrics(y_preds: np.array,
             the scores for each class are returned. Otherwise, this determines the 
             type of averaging performed on the data.
     """
+    # return area under curve and best threshold (theta)
+    # precision, recall, thresholds = precision_recall_curve(y_true, y_preds)
+    # f1_scores = 2 * recall * precision / (recall + precision)
+    # best_threshold = thresholds[np.argmax(f1_scores)]
+    # y_preds = (y_preds>best_threshold).astype(int)
+    auc_score = roc_auc_score(y_true,y_preds)
+    precision, recall, threshold = precision_recall_curve(y_true, y_preds)
+    f1_scores = 2 * recall * precision / (recall + precision)
+    best_id = np.argmax(f1_scores)
+    theta = threshold[best_id]
+    F1 = f1_scores[best_id]
+    prec = precision[best_id]
+    rec = recall[best_id]
+
+
     return [
-        np.mean(y_preds == y_true),
-        precision_score(y_true, y_preds, average=average),
-        recall_score(y_true, y_preds, average=average)
+        accuracy_score(y_true,y_preds),
+        prec,
+        rec
     ]
 
 

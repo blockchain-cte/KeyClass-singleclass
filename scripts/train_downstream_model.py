@@ -42,7 +42,8 @@ def load_data(args):
             join(args['preds_path'], f"{args['label_model']}_proba_preds.pkl"),
             'rb') as f:
         proba_preds = pickle.load(f)
-    y_train_lm = np.argmax(proba_preds, axis=1)
+    # y_train_lm = np.argmax(proba_preds, axis=1)
+    y_train_lm = proba_preds
     sample_weights = np.max(proba_preds,
                             axis=1)  # Sample weights for noise aware loss
 
@@ -192,7 +193,8 @@ def train(args_cmd):
     # Print statistics
     if training_labels_present:
         training_metrics_with_gt = utils.compute_metrics(
-            y_preds=np.argmax(end_model_preds_train, axis=1),
+            # y_preds=np.argmax(end_model_preds_train, axis=1),
+            y_preds=end_model_preds_train,
             y_true=y_train_masked,
             average=args['average'])
         utils.log(metrics=training_metrics_with_gt,
@@ -200,8 +202,9 @@ def train(args_cmd):
                   results_dir=args['results_path'],
                   split='train')
 
-    training_metrics_with_lm = utils.compute_metrics(y_preds=np.argmax(
-        end_model_preds_train, axis=1),
+    training_metrics_with_lm = utils.compute_metrics(
+        # y_preds=np.argmax(end_model_preds_train, axis=1),
+        y_preds=end_model_preds_train,
                                                      y_true=y_train_lm_masked,
                                                      average=args['average'])
     utils.log(metrics=training_metrics_with_lm,
@@ -210,7 +213,8 @@ def train(args_cmd):
               split='train')
 
     testing_metrics = utils.compute_metrics_bootstrap(
-        y_preds=np.argmax(end_model_preds_test, axis=1),
+        # y_preds=np.argmax(end_model_preds_test, axis=1),
+        y_preds=end_model_preds_test,
         y_true=y_test,
         average=args['average'],
         n_bootstrap=args['n_bootstrap'],
@@ -261,7 +265,8 @@ def train(args_cmd):
 
     # Print statistics
     testing_metrics = utils.compute_metrics_bootstrap(
-        y_preds=np.argmax(end_model_preds_test, axis=1),
+        # y_preds=np.argmax(end_model_preds_test, axis=1),
+        y_preds=end_model_preds_test,
         y_true=y_test,
         average=args['average'],
         n_bootstrap=args['n_bootstrap'],
@@ -297,19 +302,22 @@ def test(args_cmd, end_model_path, end_model_self_trained_path):
     # Print statistics
     if training_labels_present:
         training_metrics_with_gt = utils.compute_metrics(
-            y_preds=np.argmax(end_model_preds_train, axis=1),
+            # y_preds=np.argmax(end_model_preds_train, axis=1),
+            y_preds=end_model_preds_train,
             y_true=y_train_masked,
             average=args['average'])
         print('training_metrics_with_gt', training_metrics_with_gt)
 
-    training_metrics_with_lm = utils.compute_metrics(y_preds=np.argmax(
-        end_model_preds_train, axis=1),
+    training_metrics_with_lm = utils.compute_metrics(
+        # y_preds=np.argmax(end_model_preds_train, axis=1),
+        y_preds=end_model_preds_train,
                                                      y_true=y_train_lm_masked,
                                                      average=args['average'])
     print('training_metrics_with_lm', training_metrics_with_lm)
 
     testing_metrics = utils.compute_metrics_bootstrap(
-        y_preds=np.argmax(end_model_preds_test, axis=1),
+        # y_preds=np.argmax(end_model_preds_test, axis=1),
+        y_preds=end_model_preds_test,
         y_true=y_test,
         average=args['average'],
         n_bootstrap=args['n_bootstrap'],
@@ -333,7 +341,8 @@ def test(args_cmd, end_model_path, end_model_self_trained_path):
 
     # Print statistics
     testing_metrics = utils.compute_metrics_bootstrap(
-        y_preds=np.argmax(end_model_preds_test, axis=1),
+        # y_preds=np.argmax(end_model_preds_test, axis=1),
+        y_preds=end_model_preds_test,
         y_true=y_test,
         average=args['average'],
         n_bootstrap=args['n_bootstrap'],

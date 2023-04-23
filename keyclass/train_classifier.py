@@ -210,16 +210,17 @@ def self_train(model: torch.nn.Module,
                                              raw_text=True)
             target_dist = get_q_soft(
                 pred_proba)  # should be of size (N, num_categories)
-            target_preds = np.argmax(target_dist, axis=1)
+            # target_preds = np.argmax(target_dist, axis=1)
+            target_preds = target_dist
 
-            self_train_agreement = np.mean(
-                np.argmax(pred_proba, axis=1) == target_preds)
+            # self_train_agreement = np.mean(
+            #     np.argmax(pred_proba, axis=1) == target_preds)
 
-            if self_train_agreement > self_train_thresh: tolcount += 1
-            else: tolcount = 0
+            # if self_train_agreement > self_train_thresh: tolcount += 1
+            # else: tolcount = 0
 
-            if tolcount >= patience:
-                break
+            # if tolcount >= patience:
+            #     break
 
         for i in range(0, batch_size * q_update_interval, batch_size):
             batch_x = X_train[inds][
@@ -242,7 +243,7 @@ def self_train(model: torch.nn.Module,
             # print('tolcount', tolcount, 'self_train_agreement', self_train_agreement, 'validation_accuracy', np.mean(val_preds==y_val))
 
         pbar.set_postfix(tolerance_count=tolcount,
-                         self_train_agreement=self_train_agreement,
+                         # self_train_agreement=self_train_agreement,
                          validation_accuracy=np.mean(
                              val_preds == y_val) if print_eval else None)
     return model
