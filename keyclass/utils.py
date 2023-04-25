@@ -93,7 +93,7 @@ def compute_metrics(y_preds: np.array,
             type of averaging performed on the data.
     """
     y_preds = np.asarray(y_preds).reshape((1,-1)).squeeze()
-    y_preds_default = (y_preds>0.5).astype(int).tolist()
+    # y_preds_default = (y_preds>0.5).astype(int).tolist()
     y_preds = y_preds.tolist()
     y_true = np.asarray(y_true).reshape((1,-1)).squeeze()
     y_true = y_true.tolist()
