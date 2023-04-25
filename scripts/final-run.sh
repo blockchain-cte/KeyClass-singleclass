@@ -17,8 +17,12 @@ echo ${green}===Unzipping MIMIC Data...===${reset}
 jar xvf mimic.zip && rm mimic.zip
 mv small-mimic mimic
 
+
+
 cd -- "$BASE_PATH"
 cd KeyClass/scripts/
-CONFIG_LOCATION="${BASE_PATH}KeyClass/config_files/config_mimic.yaml"
-echo $CONFIG_LOCATION
-python run_all.py --config $CONFIG_LOCATION
+python config_creator.py
+python run_all_configs.py
+#CONFIG_LOCATION="${BASE_PATH}KeyClass/config_files/config_mimic.yaml"
+#echo $CONFIG_LOCATION
+#python run_all.py --config $CONFIG_LOCATION
