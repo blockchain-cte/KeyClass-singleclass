@@ -57,5 +57,5 @@ target_00: infections, parasitic & also infect, appear infect, bacteri infect, b
 topk: 50
 use_custom_encoder: false
 use_noise_aware_loss: true
-n_class_being_tested: 0
+n_class_being_tested: 1
 size_of_dataset: 10
