@@ -116,8 +116,8 @@ def compute_metrics(y_preds: np.array,
     acc = accuracy_score(y_true, (y_preds>theta).astype(int))
     print("Acc",acc)
 
-    prec2, rec2, f1_2, _ = precision_recall_fscore_support(y_true, y_preds_default)
-    acc2 = accuracy_score(y_true, y_preds_default)
+    # prec2, rec2, f1_2, _ = precision_recall_fscore_support(y_true, y_preds_default)
+    # acc2 = accuracy_score(y_true, y_preds_default)
 
     return [
         F1,
