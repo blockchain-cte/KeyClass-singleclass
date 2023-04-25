@@ -70,10 +70,10 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
         results['Accuracy'] = metrics[2]
         results['Recall'] = metrics[3]
         results['Theta'] = metrics[4]
-        results['F1 - Default'] = metrics[5]
-        results['Precision - Default'] = metrics[6]
-        results['Accuracy - Default'] = metrics[7]
-        results['Recall - Default'] = metrics[8]
+        results['F1_Default'] = metrics[5]
+        results['Precision_Default'] = metrics[6]
+        results['Accuracy_Default'] = metrics[7]
+        results['Recall_Default'] = metrics[8]
 
     # elif isinstance(metrics, np.ndarray):
     #     # assert len(metrics) == 3, "Metrics must be of length 3!"
@@ -89,6 +89,7 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
         f'{class_being_tested}_{split}_{filename}_{datetime.now().strftime("%d-%b-%Y-%H_%M_%S")}.txt'
     )
     print(f'Saving results in {filename_complete}...')
+    print(results)
 
     with open(filename_complete, 'w', encoding='utf-8') as f:
         f.write(json.dumps(results))
