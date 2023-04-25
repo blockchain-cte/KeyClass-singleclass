@@ -64,12 +64,18 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
         results['Accuracy_Default'] = metrics[7]
         results['Recall_Default'] = metrics[8]
 
-    # elif isinstance(metrics, np.ndarray):
+    elif isinstance(metrics, np.ndarray):
     #     # assert len(metrics) == 3, "Metrics must be of length 3!"
-    #     results = dict()
-    #     results['F1 (mean, std)'] = metrics[0].tolist()
-    #     results['Precision (mean, std)'] = metrics[1].tolist()
-    #     results['Accuracy (mean, std)'] = metrics[2].tolist()
+        results = dict()
+        results['F1 (mean, std)'] = metrics[0].tolist()
+        results['Precision (mean, std)'] = metrics[1].tolist()
+        results['Accuracy (mean, std)'] = metrics[2].tolist()
+        results['Recall (mean, std)'] = metrics[3].tolist()
+        results['Theta (mean, std)'] = metrics[4].tolist()
+        results['F1_Default (mean, std)'] = metrics[5].tolist()
+        results['Precision_Default (mean, std)'] = metrics[6].tolist()
+        results['Accuracy_Default (mean, std)'] = metrics[7].tolist()
+        results['Recall_Default (mean, std)'] = metrics[8].tolist()
     else:
         results = metrics
 
