@@ -36,6 +36,7 @@ import os
 from os.path import join, exists
 
 def label_converter(args, inp):
+    print("Inside Label Converter")
     return_val = []
     for line in inp:
         row = []
@@ -43,6 +44,7 @@ def label_converter(args, inp):
             if c=='0' or c=='1':
                 row.append(int(c))
         # return_val.append(row)
+        print(row)
         return_val.append(row[args['n_class_being_tested']])
     return np.array(return_val)
 
