@@ -36,8 +36,8 @@ import os
 from os.path import join, exists
 
 def label_converter(args, inp):
-    print("Inside Label Converter")
-    print("Arg",args['n_class_being_tested'])
+    # print("Inside Label Converter")
+    # print("Arg",args['n_class_being_tested'])
     return_val = []
     for line in inp:
         row = []
@@ -45,7 +45,7 @@ def label_converter(args, inp):
             if c=='0' or c=='1':
                 row.append(int(c))
         # return_val.append(row)
-        print(row, row[args['n_class_being_tested']])
+        # print(row, row[args['n_class_being_tested']])
         return_val.append(row[args['n_class_being_tested']])
     return np.array(return_val)
 
@@ -92,7 +92,7 @@ def run(args_cmd):
         if 'target' in a: label_names.append(args[a])
 
     label_names = [label_names[args['n_class_being_tested']]]
-    print("Label Names",label_names)
+    # print("Label Names",label_names)
 
     # Creating labeling functions
     labeler = create_lfs.CreateLabellingFunctions(
