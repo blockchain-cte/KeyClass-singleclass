@@ -19,7 +19,7 @@ label_model_n_epochs: 100
 max_num: 500
 min_df: 0.001
 model_path: ../models/mimic/
-n_bootstrap: 100
+n_bootstrap: 0
 n_classes: 1 # Change to 19 in final run
 n_jobs: 10
 ngram_range: !!python/tuple
