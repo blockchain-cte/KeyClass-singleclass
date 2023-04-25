@@ -51,17 +51,6 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
         class_being_tested: str
             Class being tested
     """
-    # return [
-    #     F1,
-    #     prec,
-    #     acc,
-    #     rec,
-    #     theta,
-    #     f1_2,
-    #     acc2,
-    #     prec2,
-    #     rec2
-    # ]
     if isinstance(metrics, list):
         # assert len(metrics) == 3, "Metrics must be of length 3!"
         results = dict()
@@ -137,7 +126,7 @@ def compute_metrics(y_preds: np.array,
     acc = accuracy_score(y_true, (y_preds>theta).astype(int))
     print("Acc",acc)
 
-    prec2, rec2, f1_2, _ = precision_recall_fscore_support(y_true, y_preds_default)
+    prec2, rec2, f1_2, _ = precision_recall_fscore_support(y_true, y_preds_default, average=average)
     acc2 = accuracy_score(y_true, y_preds_default)
 
     return [
