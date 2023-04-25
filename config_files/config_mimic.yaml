@@ -58,4 +58,4 @@ topk: 50
 use_custom_encoder: false
 use_noise_aware_loss: true
 n_class_being_tested: 1
-size_of_dataset: 10
+size_of_dataset: 1000
