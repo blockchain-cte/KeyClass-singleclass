@@ -35,7 +35,7 @@ from yaml import CLoader as Loader, CDumper as Dumper
 
 
 def log(metrics: Union[List, Dict], filename: str, results_dir: str,
-        split: str):
+        split: str, class_being_tested: str):
     """Logging function
         
         Parameters
@@ -48,6 +48,8 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
             Path to results directory
         split: str
             Train/test split
+        class_being_tested: str
+            Class being tested
     """
     if isinstance(metrics, list):
         assert len(metrics) == 3, "Metrics must be of length 3!"
@@ -66,7 +68,7 @@ def log(metrics: Union[List, Dict], filename: str, results_dir: str,
 
     filename_complete = join(
         results_dir,
-        f'{split}_{filename}_{datetime.now().strftime("%d-%b-%Y-%H_%M_%S")}.txt'
+        f'{class_being_tested}_{split}_{filename}_{datetime.now().strftime("%d-%b-%Y-%H_%M_%S")}.txt'
     )
     print(f'Saving results in {filename_complete}...')
 
@@ -93,7 +95,7 @@ def compute_metrics(y_preds: np.array,
             type of averaging performed on the data.
     """
     y_preds = np.asarray(y_preds).reshape((1,-1)).squeeze()
-    # y_preds_default = (y_preds>0.5).astype(int).tolist()
+    y_preds_default = (y_preds>0.5).astype(int).tolist()
     y_preds = y_preds.tolist()
     y_true = np.asarray(y_true).reshape((1,-1)).squeeze()
     y_true = y_true.tolist()
@@ -116,8 +118,8 @@ def compute_metrics(y_preds: np.array,
     acc = accuracy_score(y_true, (y_preds>theta).astype(int))
     print("Acc",acc)
 
-    # prec2, rec2, f1_2, _ = precision_recall_fscore_support(y_true, y_preds_default)
-    # acc2 = accuracy_score(y_true, y_preds_default)
+    prec2, rec2, f1_2, _ = precision_recall_fscore_support(y_true, y_preds_default)
+    acc2 = accuracy_score(y_true, y_preds_default)
 
     return [
         F1,
